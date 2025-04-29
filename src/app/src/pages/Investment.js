@@ -40,14 +40,7 @@ const FinancialChatBot = () => {
 
   const messagesEndRef = useRef(null);
 
-  // === Navigation ===
-  const navItems = [
-    { name: "ClassifyBot 💡", path: "/dashboard" },
-    { name: "Optimization", path: "/optimization" },
-    { name: "Investment", path: "/investment" },
-    { name: "News", path: "/FinancialNews" },
-  ];
-
+ 
   // === Persist savings ===
   useEffect(() => {
     localStorage.setItem("estimatedSavings", estimatedSavings.toString());
