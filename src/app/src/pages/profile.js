@@ -66,6 +66,7 @@ const Profile = () => {
   const [generatedTransactions, setGeneratedTransactions] = useState([]);
   const [showTransactionTable, setShowTransactionTable] = useState(false);
   
+  const API_URL = "https://credgeai.cloud.arc.gwu.edu/groq/generate";  // Updated API endpoint
 
   const handleUpload = async () => {
     if (!file) return setError("Please select a file first.");
@@ -159,7 +160,7 @@ const Profile = () => {
     formData.append("file", pdfFile);
 
     try {
-      const response = await fetch("http://localhost:5050/upload", {
+      const response = await fetch("https://credgeai.cloud.arc.gwu.edu/transaction/upload", {
         method: "POST",
         body: formData,
       });
@@ -351,7 +352,6 @@ const Profile = () => {
       return;
     }
 
-    // Validate the user form fields
     const { age, gender, householdSize, annualIncome, zipcode } = userData;
     if (!age || !gender || !householdSize || !annualIncome || !zipcode) {
       setError("Please fill in all fields.");
@@ -360,9 +360,13 @@ const Profile = () => {
 
     setLoading(true);
     try {
-      const response = await fetch("http://52.71.240.201/generate", {
+      const response = await fetch(API_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+            'Content-Type': 'application/json',
+            'Origin': window.location.origin
+        },
+        credentials: 'include',
         body: JSON.stringify({
           age: Number(age),
           gender,
@@ -474,10 +478,12 @@ const Profile = () => {
     setError('');
 
     try {
-        const response = await fetch('http://52.71.240.201/generate', {
-            method: 'POST',
+        const response = await fetch(API_URL, {
+            method: 'POST',  // Changed to POST
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'text/event-stream',
+                'Origin': window.location.origin
             },
             body: JSON.stringify(requestData)
         });
@@ -488,7 +494,7 @@ const Profile = () => {
 
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
-        let buffer = ''; // Add a buffer to handle incomplete JSON
+        let buffer = '';
 
         while (true) {
             const { value, done } = await reader.read();
@@ -499,11 +505,9 @@ const Profile = () => {
             }
 
             const chunk = decoder.decode(value);
-            buffer += chunk; // Add new chunk to buffer
+            buffer += chunk;
             
-            // Split buffer into lines and process each complete line
             const lines = buffer.split('\n');
-            // Keep the last potentially incomplete line in the buffer
             buffer = lines.pop() || '';
 
             for (const line of lines) {
@@ -512,17 +516,7 @@ const Profile = () => {
                         const rawData = line.slice(5).trim();
                         if (!rawData) continue;
 
-                        // Log the raw data for debugging
-                        console.log('Raw SSE data:', rawData);
-
-                        let jsonData;
-                        try {
-                            jsonData = JSON.parse(rawData);
-                        } catch (jsonError) {
-                            console.error('JSON Parse Error:', jsonError);
-                            console.error('Problematic data:', rawData);
-                            continue; // Skip this malformed piece of data
-                        }
+                        const jsonData = JSON.parse(rawData);
 
                         // Update UI states
                         if (jsonData.message) setGenerationStatus(jsonData.message);
@@ -533,18 +527,13 @@ const Profile = () => {
                             setGeneratedTransactions(prev => [...prev, ...jsonData.transactions]);
                         }
 
-                        // Handle completion
                         if (jsonData.status === 'complete') {
-                            console.log('Generation complete:', jsonData);
                             setGenerationStatus('Generation complete!');
                             if (jsonData.transactions) {
                                 const mappedTransactions = mapToStandardCategories(jsonData.transactions);
                                 setGeneratedTransactions(jsonData.transactions);
-                                
-                                // Save mapped transactions for dashboard
                                 localStorage.setItem('transactions', JSON.stringify(mappedTransactions));
                                 
-                                // Calculate and save category totals
                                 const categoryTotals = mappedTransactions.reduce((acc, transaction) => {
                                     acc[transaction.Category] = (acc[transaction.Category] || 0) + transaction.Amount;
                                     return acc;
@@ -555,15 +544,8 @@ const Profile = () => {
                             setShowTransactionTable(true);
                             return;
                         }
-
-                        // Handle errors
-                        if (jsonData.status === 'error') {
-                            throw new Error(jsonData.message || 'Generation failed');
-                        }
                     } catch (e) {
                         console.error('Error processing SSE data:', e);
-                        console.error('Problematic line:', line);
-                        // Don't throw the error, just log it and continue
                         continue;
                     }
                 }
@@ -572,11 +554,8 @@ const Profile = () => {
     } catch (error) {
         console.error('Generation failed:', error);
         setError(`Failed to generate transactions: ${error.message}`);
-        setIsGenerating(false);
     } finally {
-        if (isGenerating) {
-            setIsGenerating(false);
-        }
+        setIsGenerating(false);
     }
   };
 

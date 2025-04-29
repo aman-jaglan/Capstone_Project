@@ -1,115 +1,159 @@
-<img src="Credge.png" alt="Credge AI Banner" width="200" height="200"/>
-
 # Credge AI – Your Financial Coach
 
-Credge AI is an AI-driven personal finance coach designed to empower users with intelligent, data-driven money management. It generates realistic **synthetic financial data** to protect privacy while enabling rich model training ([paper](https://arxiv.org/pdf/2410.15653)). It automatically **classifies and optimizes budgets**, and offers an **LLM-based investment advisor** for personalized guidance.
+<img src="Credge.png" alt="Credge AI Banner" width="200" height="200"/>
 
----
+Credge AI is an AI-driven personal finance coach that empowers users with intelligent, data-driven money management solutions. Our platform generates realistic synthetic financial data to protect user privacy while enabling rich model training ([research paper](https://arxiv.org/pdf/2410.15653)).
 
-## ✨ Features
+## 🚀 Key Features
 
-- **Synthetic Data Generator**: Uses Bayesian modeling and GANs to simulate realistic transaction records ([paper](https://arxiv.org/pdf/2410.15653)).
-- **Budget Classification & Optimization**: Classifies expenses using deep learning (BERT, LSTM) and suggests budget improvements (~3–5% savings).
-- **LLM Investment Advisor**: Provides personalized advice leveraging LLaMA/GPT-based models ([study](https://markets.businessinsider.com/news/stocks/chatgpt-4-vs-humans-ai-financial-analysis-forecasting-new-study-2024-5)).
-- **Interactive Web App**: React-based app for goal setting, budget visualization, and investment chat.
+### 1. Synthetic Data Generator
+- Uses advanced Bayesian modeling and GANs to simulate realistic transaction records
+- Protects user privacy while maintaining data utility
+- Research-backed methodology ([paper](https://arxiv.org/pdf/2410.15653))
 
----
+### 2. Budget Classification & Optimization
+- Deep learning-powered expense classification (BERT, LSTM)
+- Smart budget improvement suggestions
+- Average savings of 3–5% on monthly expenses
 
-## 🏗️ Architecture
+### 3. LLM Investment Advisor
+- Personalized investment advice using LLaMA/GPT-based models
+- Research-proven effectiveness ([study](https://markets.businessinsider.com/news/stocks/chatgpt-4-vs-humans-ai-financial-analysis-forecasting-new-study-2024-5))
+- Real-time market analysis
 
-Credge AI has three major components:
+### 4. Interactive Web Interface
+- React-based modern UI
+- Intuitive goal setting and tracking
+- Comprehensive financial visualizations
 
-1. **Synthetic Data Engine** (Bayesian + GANs + LLMs)
-2. **Budget Classification & Optimization Agent** (Logistic Regression, LSTM, BERT, LLaMA)
-3. **LLM Investment Advisor** (LLaMA, GPT, FinBERT)
+## 🏗️ System Architecture
 
-These modules work together through an interactive front-end, ensuring smooth data and decision flows.
+Credge AI consists of three core components working in harmony:
 
----
+1. **Synthetic Data Engine**
+   - Bayesian modeling
+   - GANs for data generation
+   - LLM integration
 
-## 🛠️ Installation
+2. **Budget Classification & Optimization Agent**
+   - Logistic Regression
+   - LSTM networks
+   - BERT for text classification
+   - LLaMA integration
 
+3. **LLM Investment Advisor**
+   - LLaMA/GPT models
+   - FinBERT for financial analysis
+   - Real-time market data integration
+
+## 🛠️ Installation Guide
+
+### Prerequisites
+- Node.js (v14 or higher)
+- Python (v3.8 or higher)
+- Docker (for containerized deployment)
+
+### Local Development Setup
 ```bash
 # Clone the repository
-git clone https://github.com/aman-jaglan/Credge.git
-cd credge-ai
+git clone https://github.com/aman-jaglan/Capstone_Project.git
+cd Capstone_Project
 
 # Navigate to app directory
-cd Credge/src/app
+cd src/app
 
 # Install dependencies
 npm install
 
-# Start the app
-npm run
+# Start the development server
+npm start
 ```
 
-Visit: [http://localhost:3000/](http://localhost:3000/)
+Access the application at: [http://localhost:3000/](http://localhost:3000/)
 
-> Ensure your API keys are set in the `.env` file if using external LLM APIs!
+> **Note**: Ensure your API keys are configured in the `.env` file for external LLM APIs.
 
----
+## 🐳 Docker Deployment
 
-## 🚀 Usage
+### Container Setup
+```bash
+# Build the Docker image
+docker build -t credge-api .
 
-- **Generate Synthetic Data**
-- **Classify & Optimize Budgets**
-- **Request Investment Advice**
-- **View Financial Visualizations**
+# Run the container
+docker run -d \
+  -p 80:80 \
+  -p 443:443 \
+  -p 8000:8000 \
+  --name credge-container \
+  credge-api
+```
 
-Access everything through the intuitive web interface!
+### SSL Certificate Configuration
+When accessing the API (https://52.71.240.201/generate), you may encounter a security warning due to self-signed SSL certificates in development.
 
----
+To proceed:
+1. Click "Advanced" in your browser
+2. Select "Proceed to [IP] (unsafe)"
+3. This is a one-time action per browser session
 
-## 📚 Technologies Used
+> **Production Note**: For production environments, we recommend using a proper domain with Let's Encrypt SSL certificates.
 
-| Language / Framework | Description |
-| :------------------ | :--------- |
-| ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) | For data generation, model training |
-| ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) | Backend/API development |
-| ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | Frontend interactive app |
-| ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white) | Model training (GANs, LSTM) |
-| ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white) | LLM Investment Advisor (GPT, LLaMA) |
-| ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white) | Deep learning framework for model building |
-| ![Hugging Face](https://img.shields.io/badge/HuggingFace-FFD21F?style=for-the-badge&logo=huggingface&logoColor=black) | Transformer models and NLP APIs |
-| ![Vantage API](https://img.shields.io/badge/Vantage-0085CA?style=for-the-badge&logo=datadog&logoColor=white) | Real-time stock market data API |
-| ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white) | High-performance backend services |
-| ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white) | Interactive AI demos and dashboards |
+### API Infrastructure
+The system uses Nginx as a reverse proxy with:
+- SSL/TLS encryption
+- CORS configuration
+- Proxy pass to FastAPI backend (port 8000)
 
----
+Key Endpoints:
+- Frontend: https://credge.vercel.app
+- API: https://52.71.240.201/generate
 
-## 📈 Research Highlights
+Nginx handles:
+- HTTP to HTTPS redirection
+- CORS headers for Vercel frontend
+- SSL certificate management
+- FastAPI proxy configuration
 
-- **Synthetic Data Realism**: GAN-generated records indistinguishable from real spending patterns.
-- **Classification Accuracy**: ~71% multi-class budget categorization ([WeNet-RF benchmark ~90%](https://pmc.ncbi.nlm.nih.gov/articles/PMC12021194/)).
-- **Budget Optimization**: Users could reallocate and save 3–5% of monthly income.
-- **Investment Advisor Effectiveness**: GPT-based advice aligned with human-level financial forecasting ([source](https://arxiv.org/abs/2504.05862)).
+## 📊 Research & Performance
 
----
+### Key Findings
+- **Synthetic Data Quality**: GAN-generated records achieve high realism in spending patterns
+- **Classification Accuracy**: 71% multi-class budget categorization (comparable to WeNet-RF benchmark of 90%)
+- **Budget Optimization**: Demonstrated 3–5% monthly savings through smart reallocation
+- **Investment Advisor**: GPT-based advice matches human-level financial forecasting accuracy
+
+## 🛠️ Technology Stack
+
+| Category | Technologies |
+|----------|-------------|
+| Backend | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white) |
+| Frontend | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) |
+| AI/ML | ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white) |
+| LLM | ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white) ![Hugging Face](https://img.shields.io/badge/HuggingFace-FFD21F?style=for-the-badge&logo=huggingface&logoColor=black) |
+| Infrastructure | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) ![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white) |
 
 ## 🤝 Contributing
 
-1. Fork the repo.
-2. Create a new branch: `git checkout -b feature/my-feature`
-3. Make changes and commit: `git commit -m 'Add my feature'`
-4. Push to your branch: `git push origin feature/my-feature`
-5. Open a Pull Request!
+We welcome contributions! Please follow these steps:
 
-See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for details.
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Commit your changes: `git commit -m 'Add my feature'`
+4. Push to the branch: `git push origin feature/my-feature`
+5. Open a Pull Request
 
----
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for detailed guidelines.
 
 ## 📄 License
 
-Licensed under the [MIT License](./LICENSE).
-
----
+This project is licensed under the [MIT License](./LICENSE).
 
 ## 🙏 Acknowledgments
 
 Special thanks to:
 - Credge AI Academy mentors
-- Open-source libraries (Hugging Face, TensorFlow, OpenAI, SDV)
-- Financial datasets from DC Open Data, Census & Yelp Open Data.
+- Open-source community (Hugging Face, TensorFlow, OpenAI, SDV)
+- Data providers (DC Open Data, Census, Yelp Open Data)
 
 ---
