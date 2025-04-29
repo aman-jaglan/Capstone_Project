@@ -66,7 +66,7 @@ const Profile = () => {
   const [generatedTransactions, setGeneratedTransactions] = useState([]);
   const [showTransactionTable, setShowTransactionTable] = useState(false);
   
-  const API_URL = "https://52.71.240.201/generate";  // Use HTTPS
+  const API_URL = "https://credgeai.cloud.arc.gwu.edu/groq/generate";  // Updated API endpoint
 
   const handleUpload = async () => {
     if (!file) return setError("Please select a file first.");
@@ -160,7 +160,7 @@ const Profile = () => {
     formData.append("file", pdfFile);
 
     try {
-      const response = await fetch("http://localhost:5050/upload", {
+      const response = await fetch("https://credgeai.cloud.arc.gwu.edu/transaction/upload", {
         method: "POST",
         body: formData,
       });
@@ -478,21 +478,14 @@ const Profile = () => {
     setError('');
 
     try {
-        // Convert request data to query parameters
-        const queryParams = new URLSearchParams({
-            age: requestData.age,
-            gender: requestData.gender,
-            household_size: requestData.household_size,
-            income: requestData.income,
-            zipcode: requestData.zipcode
-        }).toString();
-
-        const response = await fetch(`${API_URL}?${queryParams}`, {
-            method: 'GET',  // Changed to GET
+        const response = await fetch(API_URL, {
+            method: 'POST',  // Changed to POST
             headers: {
+                'Content-Type': 'application/json',
                 'Accept': 'text/event-stream',
-                'Origin': 'https://credge.vercel.app'
-            }
+                'Origin': window.location.origin
+            },
+            body: JSON.stringify(requestData)
         });
 
         if (!response.ok) {
