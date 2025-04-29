@@ -50,6 +50,43 @@ Visit: [http://localhost:3000/](http://localhost:3000/)
 
 ---
 
+## 🐳 Docker & API Setup
+
+### Docker Container Setup
+```bash
+# Build and run the Docker container
+docker build -t credge-api .
+docker run -d -p 80:80 -p 443:443 -p 8000:8000 --name credge-container credge-api
+```
+
+### SSL Certificate Notice
+When accessing the API (https://52.71.240.201/generate), you'll see a security warning because we use a self-signed SSL certificate. This is normal for development environments.
+
+To proceed:
+1. Click "Advanced" in your browser
+2. Click "Proceed to [IP] (unsafe)" or "Accept the Risk and Continue"
+3. This only needs to be done once per browser session
+
+> **Note**: For production deployment, we recommend using a proper domain name with Let's Encrypt SSL certificates.
+
+### API Configuration
+The API uses Nginx as a reverse proxy with the following features:
+- SSL/TLS encryption (self-signed certificates)
+- CORS configuration for secure frontend-backend communication
+- Proxy pass to FastAPI backend on port 8000
+
+Key endpoints:
+- Frontend: https://credge.vercel.app
+- API: https://52.71.240.201/generate
+
+The Nginx configuration handles:
+- HTTP to HTTPS redirection
+- CORS headers for Vercel frontend
+- SSL certificate management
+- Proxy configuration to FastAPI
+
+---
+
 ## 🚀 Usage
 
 - **Generate Synthetic Data**
@@ -75,6 +112,7 @@ Access everything through the intuitive web interface!
 | ![Vantage API](https://img.shields.io/badge/Vantage-0085CA?style=for-the-badge&logo=datadog&logoColor=white) | Real-time stock market data API |
 | ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white) | High-performance backend services |
 | ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white) | Interactive AI demos and dashboards |
+| ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) | Containerization and deployment |
 
 ---
 
