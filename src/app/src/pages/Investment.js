@@ -1434,7 +1434,7 @@ import {
   Warning as RiskLevelIcon
 } from "@mui/icons-material";
 
-const API_BASE_URL = "http://localhost:5050";
+const API_BASE_URL = "http://localhost:5001";
 
 const FinancialChatBot = () => {
   const [estimatedSavings, setEstimatedSavings] = useState(() => {
