@@ -1,6 +1,8 @@
 # Credge AI – Your Financial Coach
 
-<img src="Credge.png" alt="Credge AI Banner" width="200" height="200"/>
+## 📺 Demo
+
+https://github.com/user-attachments/assets/2b3f13fc-bf67-42e6-8894-247373f131c3
 
 Credge AI is an AI-driven personal finance coach that empowers users with intelligent, data-driven money management solutions. Our platform generates realistic synthetic financial data to protect user privacy while enabling rich model training ([research paper](https://arxiv.org/pdf/2410.15653)).
 
