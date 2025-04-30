@@ -6,6 +6,23 @@ https://github.com/user-attachments/assets/2b3f13fc-bf67-42e6-8894-247373f131c3
 
 Credge AI is an AI-driven personal finance coach that empowers users with intelligent, data-driven money management solutions. Our platform generates realistic synthetic financial data to protect user privacy while enabling rich model training ([research paper](https://arxiv.org/pdf/2410.15653)).
 
+## 📋 Table of Contents
+- [Key Features](#-key-features)
+- [System Architecture](#️-system-architecture)
+- [Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation Steps](#installation-steps)
+  - [Environment Setup](#environment-setup)
+  - [Running the Application](#running-the-application)
+- [Docker Deployment](#-docker-deployment)
+- [API Documentation](#-api-documentation)
+- [Troubleshooting](#-troubleshooting)
+- [Research & Performance](#-research--performance)
+- [Technology Stack](#️-technology-stack)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Acknowledgments](#-acknowledgments)
+
 ## 🚀 Key Features
 
 ### 1. Synthetic Data Generator
@@ -48,32 +65,110 @@ Credge AI consists of three core components working in harmony:
    - FinBERT for financial analysis
    - Real-time market data integration
 
-## 🛠️ Installation Guide
+## 🚀 Getting Started
 
 ### Prerequisites
+Before you begin, ensure you have the following installed:
 - Node.js (v14 or higher)
 - Python (v3.8 or higher)
-- Docker (for containerized deployment)
+- pip (Python package manager)
+- Docker (optional, for containerized deployment)
+- Git
 
-### Local Development Setup
+### Installation Steps
+
+1. **Clone the Repository**
 ```bash
-# Clone the repository
 git clone https://github.com/aman-jaglan/Capstone_Project.git
 cd Capstone_Project
+```
 
-# Navigate to app directory
-cd src/app
+2. **Backend Setup**
+```bash
+# Create and activate Python virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows, use: venv\Scripts\activate
 
-# Install dependencies
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Start the backend server
+cd backend
+python app.py
+```
+
+3. **Frontend Setup**
+```bash
+# Navigate to frontend directory
+cd frontend
+
+# Install Node dependencies
 npm install
 
 # Start the development server
 npm start
 ```
 
-Access the application at: [http://localhost:3000/](http://localhost:3000/)
+### Environment Setup
 
-> **Note**: Ensure your API keys are configured in the `.env` file for external LLM APIs.
+1. Create a `.env` file in the root directory:
+```bash
+cp .env.example .env
+```
+
+2. Configure your environment variables:
+```env
+REACT_APP_API_URL=http://localhost:5001
+OPENAI_API_KEY=your_api_key_here
+DATABASE_URL=your_database_url
+```
+
+### Running the Application
+
+1. **Start Backend Server**
+```bash
+# From the root directory
+cd backend
+python app.py
+```
+The backend will be available at: http://localhost:5001
+
+2. **Start Frontend Development Server**
+```bash
+# From the root directory
+cd frontend
+npm start
+```
+The application will be available at: http://localhost:3000
+
+## 🔧 Troubleshooting
+
+Common issues and solutions:
+
+1. **Port Already in Use**
+```bash
+# Kill process using port 5001
+lsof -i :5001  # Find PID
+kill -9 <PID>  # Kill process
+```
+
+2. **Node Modules Issues**
+```bash
+# Clear npm cache and reinstall
+npm cache clean --force
+rm -rf node_modules
+npm install
+```
+
+3. **Python Virtual Environment Issues**
+```bash
+# Recreate virtual environment
+deactivate  # If already in a venv
+rm -rf venv
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
 ## 🐳 Docker Deployment
 
@@ -116,6 +211,26 @@ Nginx handles:
 - CORS headers for Vercel frontend
 - SSL certificate management
 - FastAPI proxy configuration
+
+## 📡 API Documentation
+
+### Key Endpoints
+
+1. **Frontend Application**
+   - URL: https://credge.vercel.app
+   - Local: http://localhost:3000
+
+2. **Backend API**
+   - Production: https://52.71.240.201/generate
+   - Local: http://localhost:5001
+
+### API Routes
+
+| Endpoint | Method | Description | Required Headers |
+|----------|---------|-------------|-----------------|
+| `/generate` | POST | Generate synthetic data | `Authorization` |
+| `/analyze` | POST | Analyze transactions | `Authorization` |
+| `/optimize` | POST | Get budget optimization | `Authorization` |
 
 ## 📊 Research & Performance
 
