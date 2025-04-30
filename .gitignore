@@ -104,6 +104,7 @@ Dockerfile
 .dockerignore
 *.tar.gz
 *.csv
+*config.py
 
 # Python cache and compiled files
 __pycache__/
