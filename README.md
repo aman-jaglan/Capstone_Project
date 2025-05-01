@@ -56,9 +56,8 @@ Credge AI consists of three core components working in harmony:
 
 2. **Budget Classification & Optimization Agent**
    - Logistic Regression
-   - LSTM networks
    - BERT for text classification
-   - LLaMA integration
+   - LLaMA3 integration
 
 3. **LLM Investment Advisor**
    - LLaMA/GPT models
