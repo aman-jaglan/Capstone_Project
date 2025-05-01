@@ -99,8 +99,9 @@ DATABASE_URL=your_database_url
 ### Running the Application
 
 1. **Start Backend Scripts**
-Files to run in a Dedicated Terminals
+
 ```bash
+NOTE: Run each file in a Dedicated Terminal
 (For Budget Classification)
 cd Capstone_Project/src/Agents/BudgetClassification_Agent
 python TransactionExtractor.py
