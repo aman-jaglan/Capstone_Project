@@ -82,32 +82,6 @@ git clone https://github.com/aman-jaglan/Capstone_Project.git
 cd Capstone_Project
 ```
 
-2. **Backend Setup**
-```bash
-# Create and activate Python virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows, use: venv\Scripts\activate
-
-# Install Python dependencies
-pip install -r requirements.txt
-
-# Start the backend server
-cd backend
-python app.py
-```
-
-3. **Frontend Setup**
-```bash
-# Navigate to frontend directory
-cd frontend
-
-# Install Node dependencies
-npm install
-
-# Start the development server
-npm start
-```
-
 ### Environment Setup
 
 1. Create a `.env` file in the root directory:
@@ -124,21 +98,23 @@ DATABASE_URL=your_database_url
 
 ### Running the Application
 
-1. **Start Backend Server**
+1. **Start Backend Scripts**
+Files to run in a Dedicated Terminals
 ```bash
-# From the root directory
-cd backend
-python app.py
-```
-The backend will be available at: http://localhost:5001
+(For Budget Classification)
+cd Capstone_Project/src/Agents/BudgetClassification_Agent
+python TransactionExtractor.py
 
-2. **Start Frontend Development Server**
-```bash
-# From the root directory
-cd frontend
-npm start
+(For Investment Advisor)
+cd Capstone_Project/src/Agents/Investment_agent/API
+python finapi.py
 ```
-The application will be available at: http://localhost:3000
+
+2. **Start React App**
+```bash
+cd Capstone_Project/src/app
+npm start 
+```
 
 ## 🔧 Troubleshooting
 
