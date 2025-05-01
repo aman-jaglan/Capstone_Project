@@ -31,7 +31,7 @@ Credge AI is an AI-driven personal finance coach that empowers users with intell
 - Research-backed methodology ([paper](https://arxiv.org/pdf/2410.15653))
 
 ### 2. Budget Classification & Optimization
-- Deep learning-powered expense classification (BERT, LSTM)
+- Deep learning-powered expense classification using LLMs (BERT, LLaMA3)
 - Smart budget improvement suggestions
 - Average savings of 3–5% on monthly expenses
 
