@@ -57,7 +57,7 @@ class GroqAPI:
 
 llm_api = GroqAPI(GROQ_API_KEY, MODEL_NAME)
 
-def extract_text_from_pdf(pdf_bytes, output_filename="extracted_text.txt"):
+def extract_text_from_pdf(pdf_bytes):
     """Extract text from PDF using pdfplumber for text-based PDFs or pytesseract for scanned PDFs.
     Saves the extracted text to a text file."""
     try:
@@ -77,10 +77,7 @@ def extract_text_from_pdf(pdf_bytes, output_filename="extracted_text.txt"):
                 all_text = ocr_text
 
             # Write the extracted text to a new text file
-            with open(output_filename, "w", encoding="utf-8") as output_file:
-                output_file.write(all_text)
-
-            print(f"Text successfully written to {output_filename}")
+            
             return all_text
     except Exception as e:
         print(f"❌ Error extracting text from PDF: {e}")
