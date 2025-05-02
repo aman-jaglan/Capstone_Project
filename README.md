@@ -4,7 +4,7 @@
 
 https://github.com/user-attachments/assets/2b3f13fc-bf67-42e6-8894-247373f131c3
 
-Credge AI is an AI-driven personal finance coach that empowers users with intelligent, data-driven money management solutions. Our platform generates realistic synthetic financial data to protect user privacy while enabling rich model training ([research paper](https://arxiv.org/pdf/2410.15653)).
+Credge AI is an AI-driven personal finance coach that empowers users with intelligent, data-driven money management solutions. Our platform generates realistic synthetic financial data to protect user privacy while enabling rich model training ([research paper](https://github.com/aman-jaglan/Capstone_Project/raw/master/research_paper/Latex/Credge%20AI%20Research%20Paper.pdf)).
 
 ## 📋 Table of Contents
 - [Data Synthesizer Workflow](#-data-synthesizer-workflow)
