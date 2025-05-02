@@ -7,6 +7,7 @@ https://github.com/user-attachments/assets/2b3f13fc-bf67-42e6-8894-247373f131c3
 Credge AI is an AI-driven personal finance coach that empowers users with intelligent, data-driven money management solutions. Our platform generates realistic synthetic financial data to protect user privacy while enabling rich model training ([research paper](https://arxiv.org/pdf/2410.15653)).
 
 ## 📋 Table of Contents
+- [Data Synthesizer Workflow](#-data-synthesizer-workflow)
 - [Key Features](#-key-features)
 - [System Architecture](#️-system-architecture)
 - [Getting Started](#-getting-started)
@@ -22,6 +23,86 @@ Credge AI is an AI-driven personal finance coach that empowers users with intell
 - [Contributing](#-contributing)
 - [License](#-license)
 - [Acknowledgments](#-acknowledgments)
+
+## 🔄 Data Synthesizer Workflow
+
+Our Data Synthesizer module generates realistic financial transaction data through a sophisticated multi-step process:
+
+### 1. Merchant Data Collection (`merchant_fetcher.py`)
+- Fetches real business data from DC's official business license database
+- Filters for active businesses in relevant categories (restaurants, retail, services, etc.)
+- Caches data locally to avoid repeated API calls
+- Cleans and standardizes merchant information (name, category, location, etc.)
+
+### 2. Customer Profile Generation
+- Creates synthetic customer profiles with realistic attributes:
+  - Demographics (age, gender)
+  - Financial information (income level)
+  - Location data (ZIP code)
+  - Household size
+- Uses statistical distributions to ensure demographic diversity
+
+### 3. Transaction Synthesis (`transaction_synthesizer_groq.py`)
+- Generates realistic financial transactions using:
+  - Customer profiles
+  - Merchant data
+  - Spending patterns
+  - Geographic proximity
+
+Key Features:
+- **Category-based Spending**: Implements realistic spending distributions across different merchant categories
+- **Geographic Intelligence**: Uses real DC ZIP codes and coordinates for location-based transactions
+- **Temporal Patterns**: Generates transactions with realistic timing and frequency
+- **Income-based Scaling**: Adjusts transaction amounts and frequencies based on customer income
+- **Merchant Selection**: Picks merchants based on proximity and category relevance
+
+### Running the Data Synthesizer
+
+1. **Setup Environment**
+```bash
+cd src/Data_Synthesizer
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+2. **Configure API Keys**
+```python
+# In config.py
+API_KEY_Groq = "your_groq_api_key"
+```
+
+3. **Generate Data**
+```bash
+# Fetch merchant data
+python code/merchant_fetcher.py
+
+# Generate transactions
+python code/transaction_synthesizer_groq.py
+```
+
+The synthesizer will create:
+- Cached merchant data in `data/dc_businesses_cleaned.csv`
+- Generated transactions in `synthetic_transactions.csv`
+- Customer profiles and transaction logs in the specified output directory
+
+### API Integration
+- Endpoint: `/generate`
+- Method: POST
+- Input: Customer profile data (age, income, location, etc.)
+- Output: Stream of synthetic transactions
+
+Example API Response:
+```json
+{
+  "transaction_id": "tx_123456",
+  "timestamp": "2024-04-26T14:30:00",
+  "merchant_name": "Local Grocery Store",
+  "amount": 67.89,
+  "category": "groceries",
+  "location": {"zip": "20001", "lat": 38.9109, "lon": -77.0163}
+}
+```
 
 ## 🚀 Key Features
 
@@ -249,5 +330,3 @@ Special thanks to:
 - Credge AI Academy mentors
 - Open-source community (Hugging Face, TensorFlow, OpenAI, SDV)
 - Data providers (DC Open Data, Census, Yelp Open Data)
-
----
