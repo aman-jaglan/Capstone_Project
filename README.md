@@ -88,6 +88,14 @@ cd Capstone_Project
 1. Create a `.env` file in the root directory:
 ```bash
 cp .env.example .env
+(add these below lines inside your env file)
+REACT_APP_FIREBASE_API_KEY=your_api
+REACT_APP_FIREBASE_AUTH_DOMAIN=REACT_APP_FIREBASE_PROJECT_ID.firebaseapp.com
+REACT_APP_FIREBASE_PROJECT_ID=firebase_projectID
+REACT_APP_FIREBASE_STORAGE_BUCKET=REACT_APP_FIREBASE_PROJECT_ID.firebasestorage.app
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=firebase_sender_ID
+REACT_APP_FIREBASE_APP_ID=firebase_app_id
+REACT_APP_FIREBASE_MEASUREMENT_ID=firebase_measurement
 ```
 
 2. Configure your environment variables:
@@ -103,6 +111,11 @@ DATABASE_URL=your_database_url
 
 ```bash
 NOTE: Run each file in a Dedicated Terminal
+
+(For Data Synthesizer)
+cd Capstone_Project/src/Data_Synthesizer/code
+python transaction_synthesizer_groq.py
+
 (For Budget Classification)
 cd Capstone_Project/src/Agents/BudgetClassification_Agent
 python TransactionExtractor.py
@@ -110,6 +123,7 @@ python TransactionExtractor.py
 (For Investment Advisor)
 cd Capstone_Project/src/Agents/Investment_agent/API
 python finapi.py
+
 ```
 
 2. **Start React App**
