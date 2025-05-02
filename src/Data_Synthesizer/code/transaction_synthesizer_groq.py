@@ -7,7 +7,7 @@ import time
 import re
 from typing import Dict, List
 from geopy.distance import geodesic
-from config import API_KEY_Groq
+# from config import API_KEY_Groq
 from pydantic import BaseModel
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -18,6 +18,8 @@ from sse_starlette.sse import EventSourceResponse
 import asyncio
 from fastapi.routing import APIRouter
 import os
+
+API_KEY_Groq = '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'
 
 path = os.path.dirname(os.path.abspath(__file__))
 df_path = os.path.join(path, "..", "data", "dc_businesses_cleaned.csv")
