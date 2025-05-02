@@ -36,7 +36,7 @@ Credge AI is an AI-driven personal finance coach that empowers users with intell
 - Average savings of 3–5% on monthly expenses
 
 ### 3. LLM Investment Advisor
-- Personalized investment advice using LLaMA/GPT-based models
+- Personalized investment advice using BERT/GPT based models
 - Research-proven effectiveness ([study](https://markets.businessinsider.com/news/stocks/chatgpt-4-vs-humans-ai-financial-analysis-forecasting-new-study-2024-5))
 - Real-time market analysis
 
@@ -60,8 +60,9 @@ Credge AI consists of three core components working in harmony:
    - LLaMA3 integration
 
 3. **LLM Investment Advisor**
-   - LLaMA/GPT models
-   - FinBERT for financial analysis
+   - BERT/GPT models
+   - FinBERT/BeBERTa for Technical Analysis
+   - Ensemble of FinBERT, RoBERTa and VADER for Funadamental and News Based Analysis
    - Real-time market data integration
 
 ## 🚀 Getting Started
