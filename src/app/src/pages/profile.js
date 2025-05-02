@@ -66,7 +66,7 @@ const Profile = () => {
   const [generatedTransactions, setGeneratedTransactions] = useState([]);
   const [showTransactionTable, setShowTransactionTable] = useState(false);
   
-  const API_URL = "https://credgeai.cloud.arc.gwu.edu/groq/generate";  // Updated API endpoint
+  const API_URL = "http://localhost:8000/generate";  // Updated API endpoint
 
   const handleUpload = async () => {
     if (!file) return setError("Please select a file first.");
@@ -160,7 +160,7 @@ const Profile = () => {
     formData.append("file", pdfFile);
 
     try {
-      const response = await fetch("https://credgeai.cloud.arc.gwu.edu/transaction/upload", {
+      const response = await fetch("http://127.0.0.1:5050/upload", {
         method: "POST",
         body: formData,
       });
