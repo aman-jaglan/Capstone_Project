@@ -162,6 +162,9 @@ Before you begin, ensure you have the following installed:
 ```bash
 git clone https://github.com/aman-jaglan/Capstone_Project.git
 cd Capstone_Project
+
+(Download necessary libraries)
+pip install -r requirements.txt
 ```
 
 ### Environment Setup
