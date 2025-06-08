@@ -21,7 +21,7 @@ app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
 CORS(app)
 nlp = spacy.load("en_core_web_sm")
 
-GROQ_API_KEY = "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"  
+GROQ_API_KEY = "YOUR_API_KEY"  
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL_NAME = "llama3-8b-8192"
 

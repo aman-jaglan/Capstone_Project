@@ -281,7 +281,7 @@ const BudgetOptimization = () => {
       requestData,
       {
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer YOUR_API_KEY`,
           "Content-Type": "application/json",
         },
       }

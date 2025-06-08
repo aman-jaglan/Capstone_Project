@@ -15,7 +15,7 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from typing import Dict, List
 # from config import NEWSAPI_KEY
 
-NEWS_API_KEY = "632d8de4fdb040e9a6cac989633a303e"  # Replace with your actual NewsAPI key.
+NEWS_API_KEY = "YOUR_API_KEY"  # Replace with your actual NewsAPI key.
 
 app = Flask(__name__)
 CORS(app)
