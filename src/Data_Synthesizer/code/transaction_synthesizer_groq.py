@@ -19,7 +19,7 @@ import asyncio
 from fastapi.routing import APIRouter
 import os
 
-API_KEY_Groq = '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'
+API_KEY_Groq = 'YOUR_API_KEY'
 
 path = os.path.dirname(os.path.abspath(__file__))
 df_path = os.path.join(path, "..", "data", "dc_businesses_cleaned.csv")
